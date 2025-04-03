@@ -130,7 +130,7 @@ const buildWalletAndWaitForFunds = async (
 const buildWallet = async (config: Config, rli: Interface, logger: Logger): Promise<(Wallet & Resource) | null> => {
   // This seed gives access to tokens minted in the genesis block of a local development node
   // only used in standalone networks to build a wallet with initial funds.
-  const GENESIS_MINT_WALLET_SEED = '0000000000000000000000000000000000000000000000000000000000000042';
+  const GENESIS_MINT_WALLET_SEED = '0000000000000000000000000000000000000000000000000000000000000001';
   return await buildWalletAndWaitForFunds(config, logger, GENESIS_MINT_WALLET_SEED);
 };
 
