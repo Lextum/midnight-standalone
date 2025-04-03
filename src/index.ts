@@ -203,7 +203,7 @@ export const run = async (config: Config, logger: Logger, dockerEnv?: DockerComp
 async function sendDUST(wallet: Wallet & Resource, amount: bigint, to: string, logger: Logger) {
   const transferRecipe = await wallet.transferTransaction([
     {
-      amount: amount,
+      amount: amount * 1_000_000n, // tDUST token amount
       receiverAddress: to,
       type: nativeToken(), // tDUST token type
     },
