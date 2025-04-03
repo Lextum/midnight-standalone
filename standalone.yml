@@ -2,14 +2,15 @@
 services:
   proof-server:
     container_name: 'standalone-proof-server'
-    image: 'midnightnetwork/proof-server:3.0.2'
+    image: 'midnightnetwork/proof-server:3.0.7'
     ports:
       - '6300:6300'
     environment:
       RUST_BACKTRACE: 'full'
+      RUST_LOG: "trace,actix_web::middleware::logger=trace,actix_web=trace"
   indexer:
     container_name: 'standalone-indexer'
-    image: 'midnightnetwork/midnight-pubsub-indexer:2.2.7'
+    image: 'midnightnetwork/midnight-pubsub-indexer:2.3.0'
     platform: linux/amd64
     ports:
       - '8088:8088'
@@ -28,7 +29,7 @@ services:
       node:
         condition: service_started
   node:
-    image: 'midnightnetwork/midnight-node:0.6.6-6288973b'
+    image: 'midnightnetwork/midnight-node:0.8.0'
     platform: linux/amd64
     container_name: 'standalone-node'
     ports:

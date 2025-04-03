@@ -6,7 +6,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "standalone": "yarn build && docker compose -f standalone.yml pull && node --experimental-specifier-resolution=node dist/launcher/standalone.js",
+    "standalone:debug": "docker rm standalone-indexer standalone-node standalone-proof-server --force && yarn build && docker compose -f standalone.yml pull && node --experimental-specifier-resolution=node dist/launcher/standalone.js",
+    "standalone": "docker rm standalone-indexer standalone-node standalone-proof-server --force && yarn build && docker compose -f standalone.yml pull && node --experimental-specifier-resolution=node dist/launcher/standalone.js",
     "build": "rm -rf dist && tsc --project tsconfig.build.json"
   },
   "dependencies": {
